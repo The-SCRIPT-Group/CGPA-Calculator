@@ -40,7 +40,6 @@ function setTrimester(){
 		trim5[i].classList.remove("show");
 		
 	}
-	console.log(y.textContent);
 	if(y.textContent === ("TRIMESTER IV " + c)){
 		
 		for(var i = 0; i < trim4.length; i++)
