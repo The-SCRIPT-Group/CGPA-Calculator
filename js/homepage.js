@@ -1,16 +1,91 @@
+function toggleBranch() {
+	var x = document.getElementById("Demo");
+	if (x.className.indexOf("w3-show") == -1) {  
+	  x.className += " w3-show";
+	} else { 
+	  x.className = x.className.replace(" w3-show", "");
+	}
+}
+function toggleTrimester() {
+	var x = document.getElementById("Demo2");
+	if (x.className.indexOf("w3-show") == -1) {  
+		x.className += " w3-show";
+	} else { 
+		x.className = x.className.replace(" w3-show", "");
+	}
+}
+function setTrimester(){
+	var x = document.getElementById("trimfield");
+	var y = document.getElementById("trimbutton");
+	if(y.textContent.length == 14)
+		var c = y.textContent.charAt(13);
+	else
+		var c = y.textContent.charAt(12);
+	var temp = x.textContent;
+	x.innerHTML = y.textContent.replace(c, "");
+	y.innerHTML = temp + c;
+	var trim4 = document.getElementsByClassName("trim4");
+	var trim5 = document.getElementsByClassName("trim5");
+	for(var i = 0; i < trim4.length; i++)
+	{
+		trim4[i].classList.remove("hide");
+		trim4[i].classList.remove("show");
+		
+	}
+	for(var i = 0; i < trim5.length; i++)
+	{
+		trim5[i].classList.remove("hide");
+		trim5[i].classList.remove("show");
+		
+	}
+	console.log(y.textContent);
+	if(y.textContent === ("TRIMESTER IV " + c)){
+		
+		for(var i = 0; i < trim4.length; i++)
+		{
+			trim4[i].classList.add("show");
+		}
+		for(var i = 0; i < trim5.length; i++)
+		{
+			trim5[i].classList.add("hide");
+		}
+	}
+		
+	else{
+		for(var i = 0; i < trim5.length; i++)
+		{
+			trim5[i].classList.add("show");
+		}
+		for(var i = 0; i < trim4.length; i++)
+		{
+			trim4[i].classList.add("hide");
+		}
+	}
+	toggleTrimester();
+}
+
+function getTrimester(){
+	var y = document.getElementById("trimbutton");
+	if(trimbutton.textContent === "TRIMESTER IV")
+		return "trim4";
+	else
+		return "trim5";
+}
+
 $(document).ready(function(){
 
 	$(".button").click(function(){
-		var elements = document.getElementsByClassName("field");
-		var exclaim_ids = document.getElementsByClassName("exclaim");
+		var field = getTrimester();
+		var elements = document.getElementsByClassName(field+"-field");
+		var exclaim_ids = document.getElementsByClassName(field+"-exclaim");
 		var marks = [];
 		var gradePoints = [];
-		for(var i = 0; i < 6; i++){
+		for(var i = 0; i < elements.length; i++){
 			marks[i] = elements[i].value;
 		}
 		if(checkFields(elements, marks, exclaim_ids) === 1){
-			gradePoints = assignGradePoint(marks);
-			var cgpa = calculateGPA(gradePoints);
+			gradePoints = assignGradePoint(marks, field);
+			var cgpa = calculateGPA(gradePoints, field);
 			$(".cgpa").text(cgpa.toFixed(2));
 			document.getElementById('modal').style.display='block';
 		}
@@ -18,7 +93,7 @@ $(document).ready(function(){
 
 	var checkFields = function(elements, marks, exclaim_ids){
 		var flg = 0;
-		for(var i = 0; i < 6; i++){
+		for(var i = 0; i < elements.length; i++){
 			if(marks[i] === ''){
 				elements[i].classList.add("missing-prop");
 				elements[i].classList.remove("field-prop");
@@ -39,19 +114,26 @@ $(document).ready(function(){
 		return 1;
 	}
 
-	var assignGradePoint = function(marks){
+	var assignGradePoint = function(marks, field){
 		var gradePoints = [];
 		var percent = [];
-		for(var i = 0; i < 6; i++){
-			if(i >= 0 && i <= 3)
-				percent[i] = (marks[i] * 2) / 3;
+		for(var i = 0; i < marks.length; i++){
+			if(field === "trim4"){
+				if(i >= 0 && i <= 3)
+					percent[i] = (marks[i] * 2) / 3;
 
-			else if(i === 4)
-				percent[i] = marks[i];
+				else if(i === 4)
+					percent[i] = marks[i];
 
-			else
-				percent[i] = marks[i] * 2;
-
+				else
+					percent[i] = marks[i] * 2;
+			}
+			else{
+				if(i>=0 && i<=3)
+					percent[i] = (marks[i] * 2) / 3;
+				else
+					percent[i] = marks[i] * 2;
+			}
 			if(percent[i] >= 80)
 				gradePoints[i] = 10;
 
@@ -75,23 +157,34 @@ $(document).ready(function(){
 
 			else
 				gradePoints[i] = 0;
-
+			console.log(gradePoints[i]);
 		}
 		return gradePoints;
 	}
 
-	var calculateGPA = function(gradePoints){
+	var calculateGPA = function(gradePoints, field){
 		var sum = 0;
-		for(var i = 0; i < 6; i++){
-			if(i >= 0 && i <= 3)
-				sum += gradePoints[i] * 3;
+		for(var i = 0; i < gradePoints.length; i++){
+			if(field === "trim4"){
+				if(i >= 0 && i <= 3)
+					sum += gradePoints[i] * 3;
 
-			else if(i === 4)
-				sum += gradePoints[i] * 2;
+				else if(i === 4)
+					sum += gradePoints[i] * 2;
 
-			else
-				sum += gradePoints[i];
+				else
+					sum += gradePoints[i];
+			}
+			else{
+				if(i >= 0 && i <= 3)
+					sum += gradePoints[i] * 3;
+				else
+					sum += gradePoints[i] * 2;
+			}
 		}
-		return (sum / 15);
+		if(field === "trim4")
+			return (sum / 15);
+		else
+			return (sum / 13);
 	}
 });
