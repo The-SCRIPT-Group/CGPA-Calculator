@@ -82,7 +82,6 @@ $(document).ready(function(){
 	$(".button").click(function(){
 		var field = getTrimester();
 		var size = "";
-		alert(screen.width);
 		if(screen.width < 601){
 			size = "-small";
 		}
