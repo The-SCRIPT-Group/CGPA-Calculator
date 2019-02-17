@@ -47,6 +47,14 @@
   transition: 0.5s;
 }
 
+.show{
+  display: block;
+}
+
+.hide{
+  display: none;
+}
+
 .button span:after {
   content: '\00bb';
   position: absolute;
