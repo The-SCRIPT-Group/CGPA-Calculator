@@ -1,3 +1,5 @@
+var trim4credits = 15;
+var trim5credits = 14;
 function toggleBranch() {
 	var x = document.getElementById("Demo");
 	if (x.className.indexOf("w3-show") == -1) {  
@@ -66,7 +68,11 @@ function setTrimester(){
 
 function getTrimester(){
 	var y = document.getElementById("trimbutton");
-	if(trimbutton.textContent === "TRIMESTER IV")
+	if(y.textContent.length == 14)
+		var c = y.textContent.charAt(13);
+	else
+		var c = y.textContent.charAt(12);
+	if(trimbutton.textContent === ("TRIMESTER IV " + c))
 		return "trim4";
 	else
 		return "trim5";
@@ -76,8 +82,14 @@ $(document).ready(function(){
 
 	$(".button").click(function(){
 		var field = getTrimester();
-		var elements = document.getElementsByClassName(field+"-field");
-		var exclaim_ids = document.getElementsByClassName(field+"-exclaim");
+		var size = "";
+		console.log(window.innerWidth);
+		if(window.innerWidth < 601){
+			size = "-small";
+		}
+		var elements = document.getElementsByClassName(field+"-field"+size);
+		console.log(elements.length);
+		var exclaim_ids = document.getElementsByClassName(field+"-exclaim"+size);
 		var marks = [];
 		var gradePoints = [];
 		for(var i = 0; i < elements.length; i++){
@@ -183,8 +195,8 @@ $(document).ready(function(){
 			}
 		}
 		if(field === "trim4")
-			return (sum / 15);
+			return (sum / trim4credits);
 		else
-			return (sum / 13);
+			return (sum / trim5credits);
 	}
 });
