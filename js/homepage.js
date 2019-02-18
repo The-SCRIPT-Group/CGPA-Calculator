@@ -142,7 +142,7 @@ $(document).ready(function(){
 				if(i>=0 && i<=3)
 					percent[i] = (marks[i] * 2) / 3;
 				else
-					percent[i] = marks[i] * 2;
+					percent[i] = marks[i];
 			}
 			if(percent[i] >= 80)
 				gradePoints[i] = 10;
