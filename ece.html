@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculate CGPA</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" href="css/homepage.css">
+  <!--<link rel="stylesheet" type="text/css" href="fonts/latin-ext.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-color: #353535;" class="bgimg">
+  <div class="w3-container w3-padding-top w3-margin-top">
+   	
+   	<div class="w3-container w3-card-4 w3-white">
+   		<img src="images/LogoTransp.png" style="float: left; width: 20%; height: 20%; padding: 8px;">
+      	<h2 style="text-align: center;">GPA Calculator for S.Y-B.TECH</h2>
+	 </div>
+	 <br>
+	 <br>
+	 <div class="w3-center">
+		<div class="w3-dropdown-click">
+				<button onclick="toggleBranch()" class="w3-button w3-light-gray w3-round">Electronics and Communication Engineering &#x25BC</button>
+				<div id="Demo" class="w3-dropdown-content w3-bar-block w3-border w3-animate-opacity">
+					<a href="index.html" class="w3-bar-item w3-button">Computer Science and Engineering</a>
+					<a href="mech.html" class="w3-bar-item w3-button">Mechanical Engineering</a>
+					<a href="#" class="w3-bar-item w3-button">Civil Engineering</a>
+					<a href="#" class="w3-bar-item w3-button">Petroleum Engineering</a>
+					<a href="chemical.html" class="w3-bar-item w3-button">Chemical Engineering</a>
+					<a href="#" class="w3-bar-item w3-button">Petroleum Engineering</a>
+				</div>
+			</div>
+			<div class="w3-dropdown-click">
+				<button onclick="toggleTrimester()" class="w3-button w3-light-gray w3-round" id = "trimbutton">TRIMESTER IV &#x25BC</button>
+				<div id="Demo2" class="w3-dropdown-content w3-bar-block w3-border w3-animate-opacity">
+					<a onclick = "setTrimester()" class="w3-bar-item w3-button" id="trimfield">TRIMESTER V </a>
+				</div>
+			</div>
+		</div>
+		<!--LARGE SCREEN-->
+        <div class="w3-container w3-margin large-screen w3-hide-small w3-hide-medium">
+                <div class="w3-row">
+                     <div class="w3-col" style="width: 10%;">
+                        <p style="visibility: hidden;">POINTER</p>
+                    </div>
+                     <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 35%;">
+                        <p>(1) Electrical Machines (Out of 150)<i class="fa fa-exclamation-circle exclaim trim5-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                        <input type="number" min="0" max="150" class = "field field-prop trim5-field" placeholder= "Enter your EMC marks out of 150">
+                    </div>
+                    <div class="w3-col" style="width: 10%;">
+                        <p style="visibility: hidden;">POINTER</p>
+                    </div>
+                    <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 35%;">
+                        <p>(2) Linear Integrated Circuits (Out of 150)<i class="fa fa-exclamation-circle exclaim trim5-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                        <input type="number" min="0" max="150" class = "field field-prop trim5-field" placeholder= "Enter your LIC marks out of 150">	
+                    </div>
+                    <div class="w3-col" style="width: 10%;">
+                        <p style="visibility: hidden;">POINTER</p>
+                    </div>
+                </div>
+       
+                <div class="w3-row">
+                    <div class="w3-col" style="width: 10%;">
+                        <p style="visibility: hidden;">POINTER</p>
+                    </div>
+                     <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 35%;">
+                        <p>(3) Computer Organization and Microprocessors (Out of 150)<i class="fa fa-exclamation-circle exclaim trim5-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                        <input type="number" min="0" max="150" class = "field field-prop trim5-field" placeholder= "Enter your COM marks out of 150">
+                    </div>
+                    <div class="w3-col" style="width: 10%;">
+                        <p style="visibility: hidden;">POINTER</p>
+                    </div>
+                    <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 35%;">
+                        <p>(4) Signals and Systems (Out of 100)<i class="fa fa-exclamation-circle exclaim trim5-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                        <input type="number" min="0" max="150" class = "field field-prop trim5-field" placeholder= "Enter your COM marks out of 100">	
+                    </div>
+                    <div class="w3-col" style="width: 10%;">
+                        <p style="visibility: hidden;">POINTER</p>
+                    </div>
+                </div>
+       
+                <div class="w3-row">
+                   <div class="w3-col" style="width: 10%;">
+                       <p style="visibility: hidden;">POINTER</p>
+                   </div>
+                    <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 35%;">
+                       <p>(5) Hardware/Software Tools for Electronics Engineering (Out of 50)<i class="fa fa-exclamation-circle exclaim trim5-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                        <input type="number" min="0" max="50" class = "field field-prop trim5-field" placeholder= "Enter your HS marks out of 50">
+                   </div>
+                   <div class="w3-col" style="width: 10%;">
+                       <p style="visibility: hidden;">POINTER</p>
+                   </div>
+                   <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 35%;">
+                       <p>(6) WPSG (Out of 50)<i class="fa fa-exclamation-circle exclaim trim5-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                       <input type="number" min="0" max="50" class = "field field-prop trim5-field" placeholder= "Enter your WPSG marks out of 50">	
+                   </div>
+                   <div class="w3-col" style="width: 10%;">
+                       <p style="visibility: hidden;">POINTER</p>
+                   </div>
+                   </div>
+                   <!--TRIMESTER IV-->
+                   <div class="w3-row">
+                       <div class="w3-col" style="width: 10%;">
+                           <p style="visibility: hidden;">POINTER</p>
+                       </div>
+                        <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round show trim4" style="width: 35%;">
+                           <p>(1) Electronic Devices and Circuits (Out of 200)<i class="fa fa-exclamation-circle exclaim trim4-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                            <input type="number" min="0" max="200" class = "field field-prop trim4-field" placeholder= "Enter your EDC marks out of 200">
+                       </div>
+                       <div class="w3-col" style="width: 10%;">
+                           <p style="visibility: hidden;">POINTER</p>
+                       </div>
+                       <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round show trim4" style="width: 35%;">
+                           <p>(2) Digital Electronics (Out of 150)<i class="fa fa-exclamation-circle exclaim trim4-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                           <input type="number" min="0" max="150" class = "field field-prop trim4-field" placeholder= "Enter your DE marks out of 150">	
+                       </div>
+                       <div class="w3-col" style="width: 10%;">
+                           <p style="visibility: hidden;">POINTER</p>
+                       </div>
+                       </div>
+       
+                       <div class="w3-row">
+                           <div class="w3-col" style="width: 10%;">
+                               <p style="visibility: hidden;">POINTER</p>
+                           </div>
+                            <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round show trim4" style="width: 35%;">
+                               <p>(3) Data Structures and Algorithms (Out of 150)<i class="fa fa-exclamation-circle exclaim trim4-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                                <input type="number" min="0" max="150" class = "field field-prop trim4-field" placeholder= "Enter your DSA marks out of 150">
+                           </div>
+                           <div class="w3-col" style="width: 10%;">
+                               <p style="visibility: hidden;">POINTER</p>
+                           </div>
+                           <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round show trim4" style="width: 35%;">
+                               <p>(4) Mathematics-III (Out of 150)<i class="fa fa-exclamation-circle exclaim trim4-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                               <input type="number" min="0" max="150" class = "field field-prop trim4-field" placeholder= "Enter your M3 marks out of 150">	
+                           </div>
+                           <div class="w3-col" style="width: 10%;">
+                               <p style="visibility: hidden;">POINTER</p>
+               
+                           </div>
+                           </div>
+                           <div class="w3-row">
+                               <div class="w3-col" style="width: 32.5%;">
+                                   <p style="visibility: hidden;">POINTER</p>
+                               </div>
+                                <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round show trim4" style="width: 35%;">
+                                   <p>(5) Indian Constitution (Out of 50)<i class="fa fa-exclamation-circle exclaim trim4-exclaim" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                                    <input type="number" min="0" max="50" class = "field field-prop trim4-field" placeholder= "Enter your IC marks out of 50">
+                               </div>
+                            </div>
+       </div>
+       <!--SMALL SCREEN-->
+       <div class="w3-container w3-margin small-screen w3-hide-large">
+           <div class="w3-row">
+                <div class="w3-col" style="width: 10%;">
+                   <p style="visibility: hidden;">POINTER</p>
+               </div>
+                <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 80%;">
+                   <p style="font-size: 2.5vw;">(1) Electrical Machines (Out of 150)<i class="fa fa-exclamation-circle exclaim trim5-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                   <input style="font-size: 2.5vw;" type="number" min="0" max="150" class = "field field-prop trim5-field-small" placeholder= "Enter your EMC marks out of 150">
+               </div>
+           </div>
+       
+           <div class="w3-row">
+               <div class="w3-col" style="width: 10%;">
+                  <p style="visibility: hidden;">POINTER</p>
+              </div>
+              <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 80%;">
+               <p style="font-size: 2.5vw;">(2) Linear Integrated Circuits (Out of 150)<i class="fa fa-exclamation-circle exclaim trim5-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+               <input style="font-size: 2.5vw"; type="number" min="0" max="150" class = "field field-prop trim5-field-small" placeholder= "Enter your LIC marks out of 150">	
+           </div>
+          </div>
+       
+          <div class="w3-row">
+           <div class="w3-col" style="width: 10%;">
+              <p style="visibility: hidden;">POINTER</p>
+          </div>
+           <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 80%;">
+              <p style="font-size: 2.5vw;">(3) Computer Organization and Microprocessors (Out of 150)<i class="fa fa-exclamation-circle exclaim trim5-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+              <input style="font-size: 2.5vw;" type="number" min="0" max="150" class = "field field-prop trim5-field-small" placeholder= "Enter your COM marks out of 150">
+          </div>
+       </div>
+       
+           <div class="w3-row">
+               <div class="w3-col" style="width: 10%;">
+               <p style="visibility: hidden;">POINTER</p>
+           </div>
+           <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 80%;">
+               <p style="font-size: 2.5vw;">(4) Signals and Systems (Out of 100)<i class="fa fa-exclamation-circle exclaim trim5-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+               <input style="font-size: 2.5vw;" type="number" min="0" max="150" class = "field field-prop trim5-field-small" placeholder= "Enter your COM marks out of 100">	
+           </div>
+           </div>
+       
+           <div class="w3-row">
+               <div class="w3-col" style="width: 10%;">
+               <p style="visibility: hidden;">POINTER</p>
+           </div>
+           <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 80%;">
+               <p style="font-size: 2.5vw;">(5) Hardware/Software Tools for Electronics Engineering (Out of 50)<i class="fa fa-exclamation-circle exclaim trim5-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                  <input style="font-size: 2.5vw;" type="number" min="0" max="50" class = "field field-prop trim5-field-small" placeholder= "Enter your HS marks out of 50">
+           </div>
+           </div>
+       
+           <div class="w3-row">
+               <div class="w3-col" style="width: 10%;">
+               <p style="visibility: hidden;">POINTER</p>
+           </div>
+           <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round hide trim5" style="width: 80%;">
+               <p style="font-size: 2.5vw;">(6) WPSG (Out of 50)<i class="fa fa-exclamation-circle exclaim trim5-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+               <input style="font-size: 2.5vw;" type="number" min="0" max="50" class = "field field-prop trim5-field-small" placeholder= "Enter your WPSG marks out of 50">	
+           </div>
+           </div>
+            <!--TRIMESTER IV-->
+           <div class="w3-row">
+               <div class="w3-col" style="width: 10%;">
+                   <p style="visibility: hidden;">POINTER</p>
+               </div>
+               <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round show trim4" style="width: 80%;">
+                   <p style="font-size: 2.5vw;">(1) Electronic Devices and Circuits (Out of 200)<i class="fa fa-exclamation-circle exclaim trim4-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                   <input style="font-size: 2.5vw;" type="number" min="0" max="200" class = "field field-prop trim4-field-small" placeholder= "Enter your EDC marks out of 200">
+               </div>
+           </div>
+           <div class="w3-row">
+               <div class="w3-col" style="width: 10%;">
+                   <p style="visibility: hidden;">POINTER</p>
+               </div>
+               <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round show trim4" style="width: 80%;">
+                   <p style="font-size: 2.5vw;">(2) Digital Electronics (Out of 150)<i class="fa fa-exclamation-circle exclaim trim4-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                   <input style="font-size: 2.5vw;" type="number" min="0" max="150" class = "field field-prop trim4-field-small" placeholder= "Enter your DE marks out of 150">	
+               </div>
+       
+           </div>
+           <div class="w3-row">
+               <div class="w3-col" style="width: 10%;">
+                   <p style="visibility: hidden;">POINTER</p>
+               </div>
+               <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round show trim4" style="width: 80%;">
+                   <p style="font-size: 2.5vw;">(3) Data Structures and Algorithms (Out of 150)<i class="fa fa-exclamation-circle exclaim trim4-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                      <input style="font-size: 2.5vw;" type="number" min="0" max="150" class = "field field-prop trim4-field-small" placeholder= "Enter your DSA marks out of 150">
+               </div>
+           </div>
+           <div class="w3-row">
+               <div class="w3-col" style="width: 10%;">
+                   <p style="visibility: hidden;">POINTER</p>
+               </div>
+               <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round show trim4" style="width: 80%;">
+                   <p style="font-size: 2.5vw;">(4) Mathematics-III (Out of 150)<i class="fa fa-exclamation-circle exclaim trim4-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                   <input style="font-size: 2.5vw;" type="number" min="0" max="150" class = "field field-prop trim4-field-small" placeholder= "Enter your M3 marks out of 150">	
+               </div>
+           </div>
+           <div class="w3-row">
+               <div class="w3-col" style="width: 10%;">
+                   <p style="visibility: hidden;">POINTER</p>
+               </div>
+               <div class="w3-col w3-card w3-white w3-margin-top w3-padding field-card w3-round show trim4" style="width: 80%;">
+                   <p style="font-size: 2.5vw;">(5) Indian Constitution (Out of 50)<i class="fa fa-exclamation-circle exclaim trim4-exclaim-small" style="float: right; font-size: 24px; color: red; visibility: hidden;"></i></p>
+                   <input style="font-size: 2.5vw;" type="number" min="0" max="50" class = "field field-prop trim4-field-small" placeholder= "Enter your IC marks out of 50">
+               </div>
+           </div>
+       
+       </div>
+       
+                
+         <br>
+       
+         <div class="w3-container w3-center w3-margin-bottom">
+             <button class="button w3-indigo"><span>Calculate </span></button>
+         </div>
+       
+         <div id="modal" class="w3-modal">
+           <div class="w3-modal-content w3-animate-top w3-card-4">
+             <header class="w3-container w3-indigo"> 
+               <span onclick="document.getElementById('modal').style.display='none'" 
+               class="w3-button w3-display-topright">&times;</span>
+               <h2 style="text-align: center;">Your CGPA is</h2>
+             </header>
+             <div class="w3-container">
+               <h1 class="cgpa" style="text-align: center;"></h1>
+             </div>
+             <footer class="w3-container w3-indigo">
+               <p style="text-align: center;">Congratulations!</p>
+             </footer>
+           </div>
+         </div>
+       
+         <div id="modal2" class="w3-modal">
+           <div class="w3-modal-content w3-animate-top w3-card-4">
+             <header class="w3-container w3-red"> 
+               <span onclick="document.getElementById('modal2').style.display='none'" 
+               class="w3-button w3-display-topright">&times;</span>
+               <h2 style="text-align: center;">ERROR!</h2>
+             </header>
+             <div class="w3-container">
+               <h1 style="text-align: center;">Input Missing</h1>
+             </div>
+             <footer class="w3-container w3-red">
+               <p style="text-align: center;">Please fill in the required fields</p>
+             </footer>
+           </div>
+         </div>
+       </div>
+           <!--FOOTER-->
+           <footer class = "w3-container w3-black">
+               <div class="w3-center">
+                   <h2>BROUGHT TO YOU BY</h2>
+                   <h5>TEAM S.C.R.I.P.T</h5>
+               </div>
+               <br>
+               <div class = "w3-row large-screen w3-hide-medium w3-hide-small">
+                   <div class = "w3-col" style="width: 33%;">
+                       <p>Contact Us: &nbsp; +91 9969596700</p>
+                   </div>
+                   <div class = "w3-col w3-right" style="width: 34%;">
+                       <p class="w3-right">E-Mail Us: script.mailus@gmail.com</p>
+                   </div>
+               </div>
+       
+               
+       
+               <div class = "w3-row small-screen w3-hide-large">
+                   <div class = "w3-col" style="width: 33%;">
+                       <p>Contact Us: &nbsp; +91 9969596700</p>
+                   </div>
+                   <div class = "w3-col w3-right" style="width: 34%;">
+                       <p class="w3-right">E-Mail Us: script.mailus@gmail.com</p>
+                   </div>
+               </div>
+           </footer>
+         <script type="text/javascript" src="js/jquery.min.js"></script>
+         <script type="text/javascript" src="js/ece.js"></script>
+       </body>
+       </html>
+       
